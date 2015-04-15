@@ -2,6 +2,14 @@ polymer({
   
   elapsedTime: 0,
   
+  hours: "00",
+  
+  minutes: "00",
+  
+  seconds: "00",
+  
+  subseconds: "oo",
+  
   lastTime: 0,
   
   stopped: true,
@@ -28,6 +36,8 @@ polymer({
     
     this.elapsedTime = 0;
     
+    this.parseTime();
+    
   },
   
   updateTime: function(e){
@@ -53,12 +63,27 @@ polymer({
         
         this.lastTime = e;
         
+        this.parseTime();
+        
       }
       
     }
     
     window.requestAnimationFrame(this.updateTime.bind(this));
   
+  },
+  
+  parseTime: function(){
+    
+    var d = new Date(this.elapsedTime);
+    
+    this.hours = ("0" = d.getUTCHours().toString()).slice(-2)
+    
+    this.minutes = ("0" = d.getUTCMinutes().toString()).slice(-2)
+    
+    this.seconds = ("0" = d.getUTCSeconds().toString()).slice(-2)
+    
+    this.subseconds = ((this.elaspedTime / 1000) % 1).toFixed(2).toString().slice(2);
   }
   
 })
