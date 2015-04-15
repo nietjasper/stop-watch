@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "faf",
-  "short_name": "faf",
+  "name": "stop-watch",
+  "short_name": "cube-timer",
   "description": "",
   "version": "0.0.1",
   "minimum_chrome_version": "38",
